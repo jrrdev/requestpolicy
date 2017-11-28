@@ -1,0 +1,13 @@
+# This file provides an Apache/PHP server to serve the files    
+# needed by marionette tests
+
+version: '3.0'
+
+services:
+   test-server:
+      image: php:7.1-apache
+      volumes:
+         - ./content:/var/www/html/:ro
+      ports:
+         - 80:80
+      command: /bin/bash -c 'a2enmod rewrite; apache2-foreground'
